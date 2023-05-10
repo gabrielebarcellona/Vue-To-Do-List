@@ -14,28 +14,49 @@ Predisporre un campo di input testuale e un pulsante "aggiungi": cliccando sul p
 const app = Vue.CreateApp({
     data(){
         return{
-            todo1 : {
-                text : 'ciao sono pippo',
-                done : false
-            },
-            todo2 : {
-                text : 'ciao sono michele',
-                done : false
-            },
+            todos :[
+                {
+                    text : 'ciao sono pippo',
+                    done : false,
+                },
+                 {
+                    text : 'ciao sono michele',
+                    done : false,
+                },
+    
+                 {
+                    text : 'ciao sono pincopallino',
+                    done : false,
+                },
+                  {
+                    text : 'ciao sono enrico',
+                    done : true,
+                },
+                 {
+                    text : 'ciao sono giorgio',
+                    done : true,
+                },
+            ],
 
-            todo3 : {
-                text : 'ciao sono pincopallino',
-                done : false
-            },
-             todo4 : {
-                text : 'ciao sono enrico',
-                done : false
-            },
-            todo5 : {
-                text : 'ciao sono giorgio',
-                done : false
+        
+        };
+    },
+    methods:{
+        addTodo() {
+            let cleanedTodo = this.newTodoText.trim();
+            if(cleanedTodo.length >= 5){
+                this.todos.unshift({
+                    text:this.newTodoText,
+                    done:false,
+                });
+                this.newTodoText = '';
+                
             }
-        }
+        },
+        deleteItem(index){
+            this.todos.splice(index,1);
+        },
+        
     }
 })
 
